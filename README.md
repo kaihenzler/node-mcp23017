@@ -55,21 +55,24 @@ sudo chmod o+rw /dev/i2c*
 
 ## Usage
 
+### NOTE
+
+  Pins are numbered from 0-15 where 0-7 is register A and 8-15 is register B
+
 ```javascript
-var MCP23017 = require('mcp23017');
+var MCP23017 = require('node-mcp23017');
 
 var mcp = new MCP23017({
   address: 0x20, //default: 0x20
   device: '/dev/i2c-1', // '/dev/i2c-1' on model B | '/dev/i2c-0' on model A
-  mode: MCP23017.OUTPUT, //configure all pins as output (default is MCP23017.INPUT)
   debug: true //default: false
 });
 
 /*
   By default all GPIOs are defined as INPUTS.
-  You can set them all the be an OUTPUT by adding '{mode: MCP23017.OUTPUT}' to the config,
-  like I did in the instantiation above.
-  You can also disable the debug option by simply not passing it to the constructor or by setting it to false
+  You can set them all the be OUTPUTs by using the pinMode-Methode (see below),
+  You can also disable the debug option by simply not passing it to the constructor
+  or by setting it to false
 */
 
 //set all GPIOS to be OUTPUTS
@@ -95,35 +98,40 @@ mcp.digitalRead(0, function (err, value) {
 ## Example (Blink 16 LEDs)
 
 ```javascript
-var MCP23017 = require('mcp23017');
+var MCP23017 = require('node-mcp23017');
 
 var mcp = new MCP23017({
-  address: 0x20, //all address pins pullew low
+  address: 0x20, //all address pins pulled low
   device: '/dev/i2c-1', // Model B
-  mode: MCP23017.OUTPUT //configure all pins as output
+  debug: false
 });
-
 
 /*
   This function blinks 16 LED, each hooked up to an port of the MCP23017
 */
-var lastPin = 0;
+var pin = 0;
 var max = 16;
 var state = false;
 
 var blink = function() {
-  if (lastPin >= max) {
-    lastPin = 0; //reset the pin counter if we reach the end
+  if (pin >= max) {
+    pin = 0; //reset the pin counter if we reach the end
   }
 
   if (state) {
-    mcp.digitalWrite(lastPin, mcp.LOW); //turn off the current LED
-    lastPin++; //increase counter
+    mcp.digitalWrite(pin, mcp.LOW); //turn off the current LED
+    pin++; //increase counter
   } else {
-    mcp.digitalWrite(lastPin, mcp.HIGH); //turn on the current LED
+    mcp.digitalWrite(pin, mcp.HIGH); //turn on the current LED
+    console.log('blinking pin', pin);
   }
   state = !state; //invert the state of this LED
 };
+
+//define all gpios as outputs
+for (var i = 0; i < 16; i++) {
+  mcp.pinMode(i, mcp.OUTPUT);
+}
 
 setInterval(blink, 100); //blink all LED's with a delay of 100ms
 ````
