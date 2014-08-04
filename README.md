@@ -96,6 +96,7 @@ mcp.digitalRead(0, function (err, value) {
 ````
 
 ## Example (Blink 16 LEDs)
+#### see examples folder
 
 ```javascript
 var MCP23017 = require('node-mcp23017');
@@ -137,8 +138,11 @@ setInterval(blink, 100); //blink all LED's with a delay of 100ms
 ````
 
 
-
 ## TODO
 
 - implement built-in pullup resistors
 - implement interrupt handling
+
+## Acknowledgement
+
+some parts are derived from the module https://github.com/x3itsolutions/mcp23017 by x3itsolutions (Fabian Behnke)
