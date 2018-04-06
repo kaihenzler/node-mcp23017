@@ -1,8 +1,7 @@
 {
-  "name": "mcp23017-blink-example",
-  "version": "1.0.0",
-  "description": "blinks 16 leds",
-  "main": "blink.js",
+  "name": "mcp23017-examples",
+  "version": "1.1.0",
+  "description": "different examples for showing functionality of library.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
