@@ -3,7 +3,7 @@ node-mcp23017
 
 Node.js library for the I2C I/O Expander MCP23017 on a Raspberry Pi
 
-It currently only supports reading from and writing to the chip
+It currently supports reading, writing and changing the pull-up resistor of the GPIOs.
 
 The module tries to mimic the Arduino-Syntax
 
@@ -79,6 +79,7 @@ var mcp = new MCP23017({
 for (var i = 0; i < 16; i++) {
   mcp.pinMode(i, mcp.OUTPUT);
   //mcp.pinMode(i, mcp.INPUT); //if you want them to be inputs
+  //mcp.pinMode(i, mcp.INPUT_PULLUP); //if you want them to be pullup inputs
 }
 
 mcp.digitalWrite(0, mcp.HIGH); //set GPIO A Pin 0 to state HIGH
@@ -140,7 +141,6 @@ setInterval(blink, 100); //blink all LED's with a delay of 100ms
 
 ## TODO
 
-- implement built-in pullup resistors
 - implement interrupt handling
 
 ## Acknowledgement
