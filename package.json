@@ -10,6 +10,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "i2c": "0.1.4"
+    "i2c-bus": "^4.0.8"
   }
 }
