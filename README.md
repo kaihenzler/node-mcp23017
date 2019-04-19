@@ -93,6 +93,44 @@ mcp.digitalRead(0, function (err, value) {
   console.log('Pin 0', value);
 });
 
+/*
+  to read all 8 pins from port A
+  use the following code-block
+  value is array of false/true values
+*/
+mcp.digitalReadA(function (err, value) {
+  console.log('Port A: Pins 0-7', value);
+});
+
+/*
+  to read all 8 pins from port B
+  use the following code-block
+  value is array of false/true values
+*/
+mcp.digitalReadB(function (err, value) {
+  console.log('Port B: Pins 0-7', value);
+});
+
+/*
+  to read all 16 input pins
+  use the following code-block.
+  value is array of false/true values
+  value[0] to value[7]: pins 0-7 on port A
+  value[8] to value[15]: pins 0-7 on port B
+*/
+mcp.digitalReadAll(function (err, value) {
+  console.log('Pins 0-15', value);
+});
+
+/*
+  to continuously read all 16 input pins
+  use the following code-block
+  second param is delay in miliseconds (default 100ms)
+*/
+mcp.digitalReadAllInterval(function (err, value) {
+  console.log('Pins 0-15', value);
+}, 1000);
+
 ````
 
 ## Example (Blink 16 LEDs)
