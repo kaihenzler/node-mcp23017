@@ -131,7 +131,7 @@ mcp.digitalReadAllInterval(function (err, value) {
   console.log('Pins 0-15', value);
 }, 1000);
 
-````
+```
 
 ## Example (Blink 16 LEDs)
 #### see examples folder
@@ -173,7 +173,7 @@ for (var i = 0; i < 16; i++) {
 }
 
 setInterval(blink, 100); //blink all LED's with a delay of 100ms
-````
+```
 
 
 ## TODO
