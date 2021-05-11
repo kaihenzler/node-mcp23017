@@ -11,7 +11,7 @@ The module tries to mimic the Arduino-Syntax
 
 install via npm. just type the following in the terminal/console
 
-````bash
+```bash
 npm install node-mcp23017 --save
 ```
 
@@ -20,38 +20,38 @@ npm install node-mcp23017 --save
 In order to use this module with the Raspberry Pi running Raspbian you have to enable to stuff
 
 
-````bash
+```bash
 $ sudo vi /etc/modules
-````
+```
 
 Add these two lines
 
-````bash
+```bash
 i2c-bcm2708
 i2c-dev
-````
+```
 
-````bash
+```bash
 $ sudo vi /etc/modprobe.d/raspi-blacklist.conf
-````
+```
 
 Comment out blacklist i2c-bcm2708
 
-````
+```
 #blacklist i2c-bcm2708
-````
+```
 
 Load kernel module
 
-````bash
+```bash
 $ sudo modprobe i2c-bcm2708
-````
+```
 
 Make device writable
 
-````bash
+```bash
 sudo chmod o+rw /dev/i2c*
-````
+```
 
 ## Usage
 
@@ -94,7 +94,7 @@ mcp.digitalRead(0, function (err, value) {
   console.log('Pin 0', value);
 });
 
-````
+```
 
 ## Example (Blink 16 LEDs)
 #### see examples folder
@@ -136,7 +136,7 @@ for (var i = 0; i < 16; i++) {
 }
 
 setInterval(blink, 100); //blink all LED's with a delay of 100ms
-````
+```
 
 
 ## TODO
