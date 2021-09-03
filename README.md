@@ -63,9 +63,10 @@ sudo chmod o+rw /dev/i2c*
 var MCP23017 = require('node-mcp23017');
 
 var mcp = new MCP23017({
-  address: 0x20, //default: 0x20
-  device: '/dev/i2c-1', // '/dev/i2c-1' on model B | '/dev/i2c-0' on model A
-  debug: true //default: false
+  address: 0x20,//default: 0x20
+  device: 1,    // 1 for '/dev/i2c-1' on model B | 0 for '/dev/i2c-0' on model A
+                // 'ls /dev/i2c*' to find which device file / number you should use
+  debug: true   //default: false
 });
 
 /*
@@ -90,7 +91,7 @@ mcp.digitalWrite(0, mcp.LOW); //set GPIO A Pin 0 to state LOW
   This reads pin Nr. 0 (GPIO A Pin 0)
   value is either false or true
 */
-mcp.digitalRead(0, function (err, value) {
+mcp.digitalRead(0, function (pin, err, value) {
   console.log('Pin 0', value);
 });
 
@@ -104,7 +105,7 @@ var MCP23017 = require('node-mcp23017');
 
 var mcp = new MCP23017({
   address: 0x20, //all address pins pulled low
-  device: '/dev/i2c-1', // Model B
+  device: 1, // Model B
   debug: false
 });
 
