@@ -1,6 +1,6 @@
 {
   "name": "node-mcp23017",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Library to use the MCP23017 16bit I/O Expander with the Raspberry Pi",
   "main": "main.js",
   "author": "Kai Henzler",
