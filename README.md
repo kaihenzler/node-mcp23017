@@ -139,11 +139,6 @@ for (var i = 0; i < 16; i++) {
 setInterval(blink, 100); //blink all LED's with a delay of 100ms
 ```
 
-
-## TODO
-
-- implement interrupt handling
-
 ## Acknowledgement
 
 some parts are derived from the module https://github.com/x3itsolutions/mcp23017 by x3itsolutions (Fabian Behnke)
